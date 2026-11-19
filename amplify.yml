@@ -1,12 +1,18 @@
 version: 1
-frontend:
-  phases:
-    build:
-      commands:
-        - echo "No build step needed for static site"
-  artifacts:
-    baseDirectory: /
-    files:
-      - "**/*"
-  cache:
-    paths: []
+applications:
+  - frontend:
+      phases:
+        preBuild:
+          commands:
+            - cd react-app && npm install
+        build:
+          commands:
+            - npm run build
+      artifacts:
+        baseDirectory: react-app/dist
+        files:
+          - "**/*"
+      cache:
+        paths:
+          - react-app/node_modules/**/*
+    appRoot: react-app
