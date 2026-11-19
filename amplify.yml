@@ -4,15 +4,15 @@ applications:
       phases:
         preBuild:
           commands:
-            - cd react-app && npm install
+            - npm install
         build:
           commands:
             - npm run build
       artifacts:
-        baseDirectory: react-app/dist
+        baseDirectory: dist
         files:
           - "**/*"
       cache:
         paths:
-          - react-app/node_modules/**/*
+          - node_modules/**/*
     appRoot: react-app
